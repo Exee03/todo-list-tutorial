@@ -11,6 +11,18 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'todo-edit',
+    loadChildren: () => import('./todo-edit/todo-edit.module').then( m => m.TodoEditPageModule)
+  },
+  {
+    path: 'todo-add',
+    loadChildren: () => import('./todo-add/todo-add.module').then( m => m.TodoAddPageModule)
+  },
+  {
+    path: 'todo-detail',
+    loadChildren: () => import('./todo-detail/todo-detail.module').then( m => m.TodoDetailPageModule)
+  },
 ];
 
 @NgModule({

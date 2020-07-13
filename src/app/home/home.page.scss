@@ -25,3 +25,9 @@
 #container a {
   text-decoration: none;
 }
+
+.roundedCorner {
+  --border-radius: 8px;
+  --color: var(--ion-color-dark);
+  --background: var(--ion-color-dark);
+}
