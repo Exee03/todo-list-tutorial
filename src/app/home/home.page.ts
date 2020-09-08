@@ -4,6 +4,8 @@ import { ModalController } from "@ionic/angular";
 import { TodoEditPage } from "../todo-edit/todo-edit.page";
 import { TodoAddPage } from "../todo-add/todo-add.page";
 import { TodoDetailPage } from "../todo-detail/todo-detail.page";
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-home",
@@ -18,7 +20,9 @@ export class HomePage {
 
   constructor(
     private firestoreService: FirebaseService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private barcodeScanner: BarcodeScanner,
+    private router: Router,
   ) {}
 
   ionViewWillEnter() {
@@ -75,5 +79,26 @@ export class HomePage {
 
   segmentChanged(event) {
     this.listType = event.detail.value;
+  }
+
+  scan() {
+    this.barcodeScanner.scan().then(async barcodeData => {
+      console.log('Barcode data', barcodeData);      
+      
+      const todo: Todo = {
+        completed: false,
+        title: barcodeData.text,
+        description: barcodeData.text,
+        date: new Date(),
+      };
+      
+      await this.firestoreService.createTodo(todo);
+     }).catch(err => {
+         console.log('Error', err);
+     });
+  }
+
+  summary() {
+    this.router.navigateByUrl('summary');
   }
 }

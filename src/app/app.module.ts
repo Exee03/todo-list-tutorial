@@ -14,6 +14,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { TodoEditPageModule } from './todo-edit/todo-edit.module';
 import { TodoAddPageModule } from './todo-add/todo-add.module';
 import { TodoDetailPageModule } from './todo-detail/todo-detail.module';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +32,7 @@ import { TodoDetailPageModule } from './todo-detail/todo-detail.module';
   providers: [
     StatusBar,
     SplashScreen,
+    BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent],

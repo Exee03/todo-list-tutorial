@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'todo-detail',
     loadChildren: () => import('./todo-detail/todo-detail.module').then( m => m.TodoDetailPageModule)
+  },  {
+    path: 'summary',
+    loadChildren: () => import('./summary/summary.module').then( m => m.SummaryPageModule)
   },
+
 ];
 
 @NgModule({

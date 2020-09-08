@@ -1,5 +1,5 @@
 {
-  "name": "todo-list",
+  "name": "com.todo-list.todo-list",
   "integrations": {
     "capacitor": {}
   },
